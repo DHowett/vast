@@ -1,4 +1,4 @@
-package views
+package vast
 
 import (
 	"html/template"

@@ -1,5 +1,5 @@
 /*
-Package views provides Ghostbin's view model. Views are templates loaded
+Package vast provides Ghostbin's view model. Views are templates loaded
 from a set of globbed files.
 
 The view model provides five predefined template functions, and allows the
@@ -86,4 +86,4 @@ The template set above seen through `b' will render
 	Hello World
 	</div>
 */
-package views
+package vast
