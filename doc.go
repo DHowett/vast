@@ -86,4 +86,4 @@ The template set above seen through `b' will render
 	Hello World
 	</div>
 */
-package vast
+package vast // import "howett.net/vast"
