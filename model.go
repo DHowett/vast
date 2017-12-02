@@ -63,9 +63,9 @@ func (m *Model) Bind(id interface{}, dp DataProvider) (*View, error) {
 	return view, nil
 }
 
-// Reload reloads the model's view templates from disk, reconstructing
-// all bound views and template functions.  No views are re-evaluated or
-// re-rendered.
+// Reload reloads the model's view templates from the model's loader,
+// reconstructing all bound views and template functions.  No views are
+// re-evaluated or re-rendered.
 func (m *Model) Reload() error {
 	m.mu.Lock()
 	defer m.mu.Unlock()
