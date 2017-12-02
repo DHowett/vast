@@ -24,7 +24,7 @@ type FunctionProvider interface {
 // behavior is documented in the package-level documentation above.
 type Model struct {
 	mu           sync.Mutex
-	glob         string
+	loader       TemplateLoader
 	baseTemplate *template.Template
 	tmpl         *template.Template
 	bound        []*View
@@ -75,7 +75,7 @@ func (m *Model) Reload() error {
 		return err
 	}
 
-	tmpl, err = tmpl.ParseGlob(m.glob)
+	tmpl, err = m.loader.LoadTemplate(tmpl)
 	if err != nil {
 		return err
 	}
@@ -94,9 +94,9 @@ func (m *Model) Reload() error {
 
 // New returns a new Model bound to the supplied data provider. The data
 // provider will be used for all `global` variable lookups.
-func New(glob string, options ...ModelOption) (*Model, error) {
+func New(loader TemplateLoader, options ...ModelOption) (*Model, error) {
 	m := &Model{
-		glob: glob,
+		loader: loader,
 	}
 
 	tmpl := template.New(".base").Funcs(template.FuncMap{
